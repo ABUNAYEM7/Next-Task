@@ -9,7 +9,7 @@ const Task = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("task-next-server.vercel.app/tasks")
+    fetch("https://task-next-server.vercel.app/tasks")
       .then((res) => res.json())
       .then((data) => setTasks(data));
   }, []);
@@ -25,7 +25,7 @@ const Task = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`task-next-server.vercel.app/tasks/${id}`, {
+        fetch(`https://task-next-server.vercel.app/tasks/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -59,7 +59,7 @@ const Task = () => {
 
     task.achievedDate = achievedDate;
 
-    fetch(`task-next-server.vercel.app/completedTask`, {
+    fetch(`https://task-next-server.vercel.app/completedTask`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(task),
@@ -67,7 +67,7 @@ const Task = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data.insertedId) {
-          fetch(`task-next-server.vercel.app/tasks/${id}`, {
+          fetch(`https://task-next-server.vercel.app/tasks/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

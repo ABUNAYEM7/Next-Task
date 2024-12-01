@@ -55,7 +55,7 @@ const Register = () => {
             email,
           };
 
-          fetch("task-next-server.vercel.app/users", {
+          fetch("https://task-next-server.vercel.app/users", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(user),

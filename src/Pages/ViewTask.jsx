@@ -8,7 +8,7 @@ const ViewTask = () => {
   const id = params.id;
 
   useEffect(() => {
-    fetch(`task-next-server.vercel.app/tasks/${id}`)
+    fetch(`https://task-next-server.vercel.app/tasks/${id}`)
       .then((res) => res.json())
       .then((data) => setTask(data));
   }, [id]);

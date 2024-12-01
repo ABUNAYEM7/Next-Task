@@ -3,15 +3,14 @@ import Swal from "sweetalert2";
 
 const CompletedTask = () => {
   const [tasks, setTasks] = useState([]);
-
   useEffect(() => {
-    fetch(`task-next-server.vercel.app/completedTask`)
+    fetch(`https://task-next-server.vercel.app/completedTask`)
       .then((res) => res.json())
       .then((data) => setTasks(data));
   }, []);
 
   const historyHandler = () => {
-    fetch("task-next-server.vercel.app/completedTask", {
+    fetch("https://task-next-server.vercel.app/completedTask", {
       method: "DELETE",
     })
       .then((res) => res.json())

@@ -27,7 +27,7 @@ const TaskEdit = () => {
   };
 
   useEffect(() => {
-    fetch(`task-next-server.vercel.app/tasks/${id}`)
+    fetch(`https://task-next-server.vercel.app/tasks/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setExistTask(data);
@@ -68,7 +68,7 @@ const TaskEdit = () => {
       task,
       date,
     };
-    fetch(`task-next-server.vercel.app/tasks/editTask/${id}`, {
+    fetch(`https://task-next-server.vercel.app/tasks/editTask/${id}`, {
       method: "PUT",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),

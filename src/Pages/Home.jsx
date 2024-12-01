@@ -53,7 +53,7 @@ const Home = () => {
       task,
       date,
     };
-    fetch("task-next-server.vercel.app/tasks", {
+    fetch("https://task-next-server.vercel.app/tasks", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
