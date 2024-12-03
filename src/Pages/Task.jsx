@@ -10,10 +10,11 @@ const Task = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/task?searchParams=${search}`)
+    fetch(`https://task-next-server.vercel.app/task?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) =>setTasks(data));
   }, [search]);
+
 
   const deleteHandler = (id) => {
     Swal.fire({
