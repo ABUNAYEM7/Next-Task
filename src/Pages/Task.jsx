@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { FaPencilAlt, FaTrashAlt, FaEye, FaShareAlt } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Task = () => {
   const [tasks, setTasks] = useState([]);
   const [shareLink, setShareLink] = useState("");
+  const [search,setSearch] = useState('')
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("https://task-next-server.vercel.app/tasks")
+    fetch(`http://localhost:5000/task?searchParams=${search}`)
       .then((res) => res.json())
-      .then((data) => setTasks(data));
-  }, []);
+      .then((data) =>setTasks(data));
+  }, [search]);
 
   const deleteHandler = (id) => {
     Swal.fire({
@@ -92,6 +93,14 @@ const Task = () => {
       {/* task-container */}
       <div className="bg-[#1d232a] my-6 rounded-lg p-6">
         <div className="flex flex-col gap-3">
+        <div className="w-full lg:w-4/5 mx-auto p-4">
+        <input
+          onChange={(e)=>setSearch(e.target.value)}
+          type="text"
+          placeholder="Search Here"
+          className="input input-bordered input-accent w-full"
+        />
+      </div>
           {tasks.length === 0 && (
             <p className="text-3xl font-bold text-red-500 text-center my-6">
               No Task Available
